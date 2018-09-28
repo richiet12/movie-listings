@@ -3,13 +3,13 @@ import React from 'react';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
-import movieListReducer from './reducers/movieList';
+import reducers from './reducers';
 import MoiveListContainer from './containers/movieList';
 
 const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 
 export const App = () => (
-	<Provider store={createStoreWithMiddleware(movieListReducer)}>
+	<Provider store={createStoreWithMiddleware(reducers)}>
 		<MoiveListContainer />
 	</Provider>
 );

@@ -7,21 +7,19 @@ import { MovieList } from './movieList';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Movie list container', () => {
-	const mockFetchMovieListfn = jest.fn();
+	const mockFetchGenreAndMovieListfn = jest.fn();
 	const loadingState = Immutable.Map({
 		fetching: true,
-		error: false,
-		errorMsg: '',
-		data: Immutable.Map({}),
 	});
-	const errorState = Immutable.Map({
+	const loadedState = Immutable.Map({
 		fetching: false,
+	});
+	const moviesErrorState = Immutable.Map({
 		error: true,
 		errorMsg: 'x went wrong',
 		data: Immutable.Map({}),
 	});
-	const successState = Immutable.Map({
-		fetching: false,
+	const moviesSuccessState = Immutable.Map({
 		error: false,
 		errorMsg: '',
 		data: Immutable.Map({
@@ -32,11 +30,20 @@ describe('Movie list container', () => {
 					title: 'The Predator',
 					poster_path: 'wMq9kQXTeQCHUZOG4fAe5cAxyUA.jpg',
 					genre_ids: [
-						27,
-						878,
 						28,
-						35,
 					],
+				},
+			],
+		}),
+	});
+	const genreSuccesState = Immutable.Map({
+		error: false,
+		errorMsg: '',
+		data: Immutable.Map({
+			genres: [
+				{
+					id: 28,
+					name: 'Action',
 				},
 			],
 		}),
@@ -49,7 +56,12 @@ describe('Movie list container', () => {
 
 	describe('fetching', () => {
 		beforeEach(() => {
-			wrapper = shallow(<MovieList movies={loadingState} fetchMovieList={mockFetchMovieListfn} />);
+			wrapper = shallow(<MovieList
+				loading={loadingState}
+				movies={moviesSuccessState}
+				genres={genreSuccesState}
+				fetchGenreAndMovieList={mockFetchGenreAndMovieListfn}
+			/>);
 			hasLoadingText = wrapper.contains('loading...');
 			hasErrorComponent = wrapper.find('ErrorMsg').length === 1;
 			header = wrapper.find('Header').length === 1;
@@ -73,9 +85,14 @@ describe('Movie list container', () => {
 		});
 	});
 
-	describe('error', () => {
+	describe('error with move fetch', () => {
 		beforeEach(() => {
-			wrapper = shallow(<MovieList movies={errorState} fetchMovieList={mockFetchMovieListfn} />);
+			wrapper = shallow(<MovieList
+				loading={loadedState}
+				movies={moviesErrorState}
+				genres={genreSuccesState}
+				fetchGenreAndMovieList={mockFetchGenreAndMovieListfn}
+			/>);
 			hasLoadingText = wrapper.contains('loading...');
 			hasErrorComponent = wrapper.find('ErrorMsg').length === 1;
 			header = wrapper.find('Header').length === 1;
@@ -99,9 +116,14 @@ describe('Movie list container', () => {
 		});
 	});
 
-	describe('real album data', () => {
+	describe('succesful movie fetch', () => {
 		beforeEach(() => {
-			wrapper = shallow(<MovieList movies={successState} fetchMovieList={mockFetchMovieListfn} />);
+			wrapper = shallow(<MovieList
+				loading={loadedState}
+				movies={moviesSuccessState}
+				genres={genreSuccesState}
+				fetchGenreAndMovieList={mockFetchGenreAndMovieListfn}
+			/>);
 			hasLoadingText = wrapper.contains('loading...');
 			hasErrorComponent = wrapper.find('ErrorMsg').length === 1;
 			header = wrapper.find('Header').length === 1;

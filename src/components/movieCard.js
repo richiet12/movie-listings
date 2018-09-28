@@ -6,9 +6,11 @@ const AlbumCard = props => (
 		<PosterImg className="movie-card__img" path={props.imgPath} alt={props.title} />
 		<div className="movie-card__info">
 			<h3 className="heading heading--3 movie-card__title">{props.title}</h3>
-			<p className="movie-card__vote">Average Vote {props.averageVote}</p>
-			<p className="movie-card__popularity">Popularity {props.popularity}</p>
-			{props.genres.map(genre => <span key={genre} className="movie-card__genre">{genre}</span>)}
+			<p className="movie-card__vote">Average vote: {props.averageVote}</p>
+			<p className="movie-card__popularity">Popularity: {props.popularity}</p>
+			<p> Genres:
+				{props.genres.map(genre => <span key={genre} className="movie-card__genre">{genre}</span>)}
+			</p>
 		</div>
 	</li>
 );

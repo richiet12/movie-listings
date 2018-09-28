@@ -3,11 +3,29 @@ import movieListReducer from './movieList';
 import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_FAILURE, FETCH_MOVIES_SUCCESS } from '../actions/fetchMovieList';
 
 const movieDefaultImmutableState = Immutable.Map({
-	fetching: false,
 	error: false,
 	errorMsg: '',
 	data: Immutable.Map({}),
 });
+
+const unsortedResults = [
+	{
+		popularity: 100,
+	},
+	{
+		popularity: 200,
+	},
+];
+
+const sortedResults = [
+	{
+		popularity: 200,
+	},
+	{
+		popularity: 100,
+	},
+];
+
 
 describe('Movie List Reducer', () => {
 	it('handles action with unknown type', () => {
@@ -17,7 +35,6 @@ describe('Movie List Reducer', () => {
 	it('handles action of type FETCH_MOVIES_REQUEST', () => {
 		const payload = {};
 		const expectedOutput = Immutable.Map({
-			fetching: true,
 			error: false,
 			errorMsg: '',
 			data: Immutable.Map({}),
@@ -28,17 +45,12 @@ describe('Movie List Reducer', () => {
 
 	it('handles action of type FETCH_MOVIES_SUCCESS', () => {
 		const payload = {
-			data: {
-				results: [
-
-				],
-			},
+			results: unsortedResults,
 		};
 		const expectedOutput = Immutable.Map({
-			fetching: false,
 			error: false,
 			errorMsg: '',
-			data: Immutable.Map({ data: { results: [] } }),
+			data: Immutable.Map({ results: sortedResults }),
 		});
 		const action = { type: FETCH_MOVIES_SUCCESS, payload };
 		expect(movieListReducer(movieDefaultImmutableState, action)).toEqual(expectedOutput);
@@ -47,7 +59,6 @@ describe('Movie List Reducer', () => {
 	it('handles action of type FETCH_MOVIES_FAILURE', () => {
 		const payload = 'an error occured';
 		const expectedOutput = Immutable.Map({
-			fetching: false,
 			error: true,
 			errorMsg: 'an error occured',
 			data: Immutable.Map({}),

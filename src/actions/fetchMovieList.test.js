@@ -35,7 +35,7 @@ describe('fetch movie list async actions', () => {
 		});
 	});
 
-	it('creates FETCH_MOVIES_REQUEST and FETCH_MOVIES_FAILURE when fetching images has been done with a broken search tag', () => {
+	it('creates FETCH_MOVIES_REQUEST and FETCH_MOVIES_FAILURE when fetching movies fails', () => {
 		mockAxios.onGet(MOVIES_ENDPOINT).reply(400, data);
 		const expectedAction = [
 			{

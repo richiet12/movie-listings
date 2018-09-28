@@ -1,6 +1,5 @@
 import Immutable from 'immutable';
-import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_FAILURE, FETCH_MOVIES_SUCCESS } from '../actions/fetchMovieList';
-import sortDecendingPopularity from '../util/sortDecendingPopularity';
+import { FETCH_GENRES_REQUEST, FETCH_GENRES_FAILURE, FETCH_GENRES_SUCCESS } from '../actions/fetchGenreList';
 
 const immutableState = Immutable.Map({
 	error: false,
@@ -10,24 +9,19 @@ const immutableState = Immutable.Map({
 
 export default function (state = immutableState, action) {
 	switch (action.type) {
-		case FETCH_MOVIES_REQUEST:
+		case FETCH_GENRES_REQUEST:
 			return state
 				.set('error', false)
 				.set('errorMsg', '')
 				.set('data', Immutable.Map());
 
-		case FETCH_MOVIES_SUCCESS:
-			// it looks like the tmdb already sorts on popularity
-			// but I have added a backup sort incase the api changes
-			if (action.payload.results) {
-				action.payload.results.sort(sortDecendingPopularity);
-			}
+		case FETCH_GENRES_SUCCESS:
 			return state
 				.set('error', false)
 				.set('errorMsg', '')
 				.set('data', Immutable.Map(action.payload));
 
-		case FETCH_MOVIES_FAILURE:
+		case FETCH_GENRES_FAILURE:
 			return state
 				.set('error', true)
 				.set('errorMsg', action.payload)
