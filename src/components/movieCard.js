@@ -7,6 +7,7 @@ const AlbumCard = props => (
 		<div className="movie-card__info">
 			<h3 className="heading heading--3 movie-card__title">{props.title}</h3>
 			<p className="movie-card__vote">Average Vote {props.averageVote}</p>
+			<p className="movie-card__popularity">Popularity {props.popularity}</p>
 			{props.genres.map(genre => <span key={genre} className="movie-card__genre">{genre}</span>)}
 		</div>
 	</li>

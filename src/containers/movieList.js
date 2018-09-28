@@ -27,7 +27,7 @@ export const MovieList = class App extends Component {
 		}
 
 		if (movieListData.get('results')) {
-			movies = movieListData.get('results');
+			movies = movieListData.get('results')
 		}
 
 		return (
@@ -41,6 +41,7 @@ export const MovieList = class App extends Component {
 								genres={movie.genre_ids}
 								imgPath={movie.poster_path}
 								averageVote={movie.vote_average}
+								popularity={movie.popularity}
 								key={movie.id}
 							/>
 						))}
