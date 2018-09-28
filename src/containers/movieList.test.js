@@ -18,6 +18,7 @@ describe('Movie list container', () => {
 		error: true,
 		errorMsg: 'x went wrong',
 		data: Immutable.Map({}),
+		filteredData: Immutable.Map({}),
 	});
 	const moviesSuccessState = Immutable.Map({
 		error: false,
@@ -49,6 +50,16 @@ describe('Movie list container', () => {
 			],
 		}),
 	});
+	const moviesSuccessNoResultsState = Immutable.Map({
+		error: false,
+		errorMsg: '',
+		data: Immutable.Map({
+			results: [],
+		}),
+		filteredData: Immutable.Map({
+			results: [],
+		}),
+	});
 	const genreSuccesState = Immutable.Map({
 		error: false,
 		errorMsg: '',
@@ -64,8 +75,8 @@ describe('Movie list container', () => {
 	let wrapper;
 	let hasLoadingText;
 	let hasErrorComponent;
-	let header;
 	let movieCards;
+	let hasNoResultsText;
 
 	describe('fetching', () => {
 		beforeEach(() => {
@@ -77,7 +88,6 @@ describe('Movie list container', () => {
 			/>);
 			hasLoadingText = wrapper.contains('loading...');
 			hasErrorComponent = wrapper.find('ErrorMsg').length === 1;
-			header = wrapper.find('Header').length === 1;
 			movieCards = wrapper.find('.movie-list').length === 1;
 		});
 
@@ -87,10 +97,6 @@ describe('Movie list container', () => {
 
 		it('has no error component', () => {
 			expect(hasErrorComponent).toEqual(false);
-		});
-
-		it('has no header', () => {
-			expect(header).toEqual(false);
 		});
 
 		it('has no movie card list', () => {
@@ -108,8 +114,8 @@ describe('Movie list container', () => {
 			/>);
 			hasLoadingText = wrapper.contains('loading...');
 			hasErrorComponent = wrapper.find('ErrorMsg').length === 1;
-			header = wrapper.find('Header').length === 1;
 			movieCards = wrapper.find('.movie-list').length === 1;
+			hasNoResultsText = wrapper.contains('no results for this selection');
 		});
 
 		it('has no loading text', () => {
@@ -120,12 +126,12 @@ describe('Movie list container', () => {
 			expect(hasErrorComponent).toEqual(true);
 		});
 
-		it('has no header', () => {
-			expect(header).toEqual(false);
-		});
-
 		it('has no movie card list', () => {
 			expect(movieCards).toEqual(false);
+		});
+
+		it('has no no-results text', () => {
+			expect(hasNoResultsText).toEqual(false);
 		});
 	});
 
@@ -139,8 +145,8 @@ describe('Movie list container', () => {
 			/>);
 			hasLoadingText = wrapper.contains('loading...');
 			hasErrorComponent = wrapper.find('ErrorMsg').length === 1;
-			header = wrapper.find('Header').length === 1;
 			movieCards = wrapper.find('.movie-list').length === 1;
+			hasNoResultsText = wrapper.contains('no results for this selection');
 		});
 
 		it('has no loading text', () => {
@@ -151,12 +157,43 @@ describe('Movie list container', () => {
 			expect(hasErrorComponent).toEqual(false);
 		});
 
-		it('has header', () => {
-			expect(header).toEqual(true);
-		});
-
 		it('has movie card list', () => {
 			expect(movieCards).toEqual(true);
+		});
+
+		it('has no no-results text', () => {
+			expect(hasNoResultsText).toEqual(false);
+		});
+	});
+
+	describe('no movies in filtered data', () => {
+		beforeEach(() => {
+			wrapper = shallow(<MovieList
+				loading={loadedState}
+				movies={moviesSuccessNoResultsState}
+				genres={genreSuccesState}
+				fetchGenreAndMovieList={mockFetchGenreAndMovieListfn}
+			/>);
+			hasLoadingText = wrapper.contains('loading...');
+			hasErrorComponent = wrapper.find('ErrorMsg').length === 1;
+			movieCards = wrapper.find('.movie-list').length === 1;
+			hasNoResultsText = wrapper.contains('no results for this selection');
+		});
+
+		it('has no loading text', () => {
+			expect(hasLoadingText).toEqual(false);
+		});
+
+		it('has no error component', () => {
+			expect(hasErrorComponent).toEqual(false);
+		});
+
+		it('has no movie card list', () => {
+			expect(movieCards).toEqual(false);
+		});
+
+		it('has no-results text', () => {
+			expect(hasNoResultsText).toEqual(true);
 		});
 	});
 });

@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { fetchGenreAndMovieList } from '../actions/fetchGenreAndMovieLists';
 import MovieCard from '../components/movieCard';
 import ErrorMsg from '../components/errorMsg';
-import Header from '../components/header';
 import GenreFilterContainer from './genreFilter';
 
 export class MovieList extends Component {
@@ -38,11 +37,11 @@ export class MovieList extends Component {
 		let genres = [];
 
 		if (isError) {
-			return <ErrorMsg msg={this.props.movies.get('errorMsg')} />;
+			return <main className="container"><ErrorMsg msg={this.props.movies.get('errorMsg')} /></main>;
 		}
 
 		if (isFetchInProgress) {
-			return <p>loading...</p>;
+			return <main className="container"><p>loading...</p></main>;
 		}
 
 		if (movieListData.get('results') && genreListData.get('genres')) {
@@ -54,25 +53,31 @@ export class MovieList extends Component {
 			}
 		}
 
-		return (
-			<div>
-				<Header title="Movies out now" />
+		if (movies.length === 0) {
+			return (
 				<main className="container">
 					<GenreFilterContainer />
-					<ul className="movie-list">
-						{movies.map(movie => (
-							<MovieCard
-								title={movie.title}
-								genres={movie.genre_names}
-								imgPath={movie.poster_path}
-								averageVote={movie.vote_average}
-								popularity={movie.popularity}
-								key={movie.id}
-							/>
-						))}
-					</ul>
+					<p>no results for this selection</p>
 				</main>
-			</div>
+			);
+		}
+
+		return (
+			<main className="container">
+				<GenreFilterContainer />
+				<ul className="movie-list">
+					{movies.map(movie => (
+						<MovieCard
+							title={movie.title}
+							genres={movie.genre_names}
+							imgPath={movie.poster_path}
+							averageVote={movie.vote_average}
+							popularity={movie.popularity}
+							key={movie.id}
+						/>
+					))}
+				</ul>
+			</main>
 		);
 	}
 }
