@@ -35,6 +35,19 @@ describe('Movie list container', () => {
 				},
 			],
 		}),
+		filteredData: Immutable.Map({
+			results: [
+				{
+					id: 346910,
+					vote_average: 5.4,
+					title: 'The Predator',
+					poster_path: 'wMq9kQXTeQCHUZOG4fAe5cAxyUA.jpg',
+					genre_ids: [
+						28,
+					],
+				},
+			],
+		}),
 	});
 	const genreSuccesState = Immutable.Map({
 		error: false,

@@ -5,9 +5,9 @@ import { fetchGenreAndMovieList } from '../actions/fetchGenreAndMovieLists';
 import MovieCard from '../components/movieCard';
 import ErrorMsg from '../components/errorMsg';
 import Header from '../components/header';
+import GenreFilterContainer from './genreFilter';
 
-
-export const MovieList = class App extends Component {
+export class MovieList extends Component {
 	componentDidMount() {
 		this.props.fetchGenreAndMovieList();
 	}
@@ -15,7 +15,7 @@ export const MovieList = class App extends Component {
 	render() {
 		const isFetchInProgress = this.props.loading.get('fetching');
 		const isError = this.props.movies.get('error') || this.props.genres.get('error');
-		const movieListData = this.props.movies.get('data');
+		const movieListData = this.props.movies.get('filteredData');
 		const genreListData = this.props.genres.get('data');
 		const addGenreNames = function (movieList, genreList) {
 			const moviesWithGenreNames = movieList;
@@ -24,8 +24,8 @@ export const MovieList = class App extends Component {
 				moviesWithGenreNames[index].genre_names = [];
 				return movie.genre_ids.map((id) => {
 					genreList.map((genre) => {
-						if (genre.id === id) {
-							movie.genre_names.push(genre.name);
+						if (genre.value === id) {
+							movie.genre_names.push(genre.label);
 						}
 						return true;
 					});
@@ -58,6 +58,7 @@ export const MovieList = class App extends Component {
 			<div>
 				<Header title="Movies out now" />
 				<main className="container">
+					<GenreFilterContainer />
 					<ul className="movie-list">
 						{movies.map(movie => (
 							<MovieCard
@@ -74,7 +75,7 @@ export const MovieList = class App extends Component {
 			</div>
 		);
 	}
-};
+}
 
 function mapStateToProps({ movies, genres, loading }) {
 	return { movies, genres, loading };
