@@ -1,0 +1,11 @@
+// This component will render the header
+
+import React from 'react';
+
+const Header = props => (
+	<header className="header">
+		<h1 className="heading heading--1 header__title container">{props.title}</h1>
+	</header>
+);
+
+export default Header;
