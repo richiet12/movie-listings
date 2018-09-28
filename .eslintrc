@@ -1,0 +1,27 @@
+{
+	"extends": "airbnb",
+	"rules": {
+		"func-names": ["error", "never"],
+		"indent": [2, "tab", { "SwitchCase": 1, "VariableDeclarator": 1 }],
+		"no-tabs": 0,
+		"react/prop-types": 0,
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": [2, "tab"],
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+		"jsx-a11y/anchor-is-valid": ["error", {
+			"components": ["Link"],
+			"specialLink": ["to"],
+			"aspects": ["noHref", "invalidHref", "preferButton"]
+		}]
+	},
+	"globals": {
+		"document": true,
+		"window": true,
+		"jest": true,
+		"beforeEach": true,
+		"describe": true,
+		"it": true,
+		"expect": true,
+		"XMLHttpRequest": true
+	  }
+}
