@@ -36,8 +36,8 @@ function mapStateToProps({ genres }) {
 	return { genres };
 }
 
-function mapDispathcToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ filterByGenre }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispathcToProps)(GenreFilter);
+export default connect(mapStateToProps, mapDispatchToProps)(GenreFilter);

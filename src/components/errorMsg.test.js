@@ -16,7 +16,7 @@ describe('Error Message', () => {
 
 		it('renders header with message', () => {
 			const errorMessage =
-				<div><h3>An error has occured</h3><strong>More details:</strong><p>x went wrong</p></div>;
+				<div><h3>An error has occurred</h3><strong>More details:</strong><p>x went wrong</p></div>;
 			expect(wrapper.contains(errorMessage)).toEqual(true);
 		});
 	});
@@ -28,7 +28,7 @@ describe('Error Message', () => {
 
 		it('renders error without message', () => {
 			const errorMessage =
-				<h3>An error has occured</h3>;
+				<h3>An error has occurred</h3>;
 			expect(wrapper.contains(errorMessage)).toEqual(true);
 		});
 	});

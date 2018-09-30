@@ -1,5 +1,3 @@
-// This component will render the header
-
 import React from 'react';
 
 const Header = props => (

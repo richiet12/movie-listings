@@ -1,4 +1,4 @@
-import sortOnPopularity from './sortDecendingPopularity';
+import sortOnPopularity from './sortDescendingPopularity';
 
 const movieList = [
 	{
@@ -56,7 +56,7 @@ const sortedMovieList = [
 
 describe('Sort', () => {
 	describe('sort by popularity', () => {
-		it('has results in decending order', () => {
+		it('has results in descending order', () => {
 			expect(movieList.sort(sortOnPopularity)).toEqual(sortedMovieList);
 		});
 	});

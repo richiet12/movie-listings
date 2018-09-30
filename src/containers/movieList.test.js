@@ -60,7 +60,7 @@ describe('Movie list container', () => {
 			results: [],
 		}),
 	});
-	const genreSuccesState = Immutable.Map({
+	const genreSuccessState = Immutable.Map({
 		error: false,
 		errorMsg: '',
 		data: Immutable.Map({
@@ -83,7 +83,7 @@ describe('Movie list container', () => {
 			wrapper = shallow(<MovieList
 				loading={loadingState}
 				movies={moviesSuccessState}
-				genres={genreSuccesState}
+				genres={genreSuccessState}
 				fetchGenreAndMovieList={mockFetchGenreAndMovieListfn}
 			/>);
 			hasLoadingText = wrapper.contains('loading...');
@@ -109,7 +109,7 @@ describe('Movie list container', () => {
 			wrapper = shallow(<MovieList
 				loading={loadedState}
 				movies={moviesErrorState}
-				genres={genreSuccesState}
+				genres={genreSuccessState}
 				fetchGenreAndMovieList={mockFetchGenreAndMovieListfn}
 			/>);
 			hasLoadingText = wrapper.contains('loading...');
@@ -140,7 +140,7 @@ describe('Movie list container', () => {
 			wrapper = shallow(<MovieList
 				loading={loadedState}
 				movies={moviesSuccessState}
-				genres={genreSuccesState}
+				genres={genreSuccessState}
 				fetchGenreAndMovieList={mockFetchGenreAndMovieListfn}
 			/>);
 			hasLoadingText = wrapper.contains('loading...');
@@ -171,7 +171,7 @@ describe('Movie list container', () => {
 			wrapper = shallow(<MovieList
 				loading={loadedState}
 				movies={moviesSuccessNoResultsState}
-				genres={genreSuccesState}
+				genres={genreSuccessState}
 				fetchGenreAndMovieList={mockFetchGenreAndMovieListfn}
 			/>);
 			hasLoadingText = wrapper.contains('loading...');

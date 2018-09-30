@@ -9,7 +9,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Genre filter container', () => {
 	let wrapper;
 	const mockFilterByGenrefn = jest.fn();
-	const genreSuccesState = Immutable.Map({
+	const genreSuccessState = Immutable.Map({
 		error: false,
 		errorMsg: '',
 		data: Immutable.Map({
@@ -25,7 +25,7 @@ describe('Genre filter container', () => {
 	beforeEach(() => {
 		wrapper = shallow(<GenreFilter
 			filterByGenre={mockFilterByGenrefn}
-			genres={genreSuccesState}
+			genres={genreSuccessState}
 		/>);
 	});
 
@@ -37,7 +37,7 @@ describe('Genre filter container', () => {
 		expect(wrapper.prop('placeholder')).toBe('filter by genre');
 	});
 
-	it('allow multiselect', () => {
+	it('allow multi select', () => {
 		expect(wrapper.prop('isMulti')).toEqual(true);
 	});
 });

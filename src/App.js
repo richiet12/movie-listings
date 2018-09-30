@@ -4,9 +4,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import reducers from './reducers';
-import MoiveListContainer from './containers/movieList';
+import MovieListContainer from './containers/movieList';
 import Header from './components/header';
-import RatingFilter from './components/ratingFilter';
+import RatingFilterComponent from './components/ratingFilter';
 import GenreFilterContainer from './containers/genreFilter';
 
 const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
@@ -17,11 +17,11 @@ const App = () => (
 			<Header title="Movies out now" />
 			<main className="container">
 				<section className="filters clearfix">
-					<h3>Filters</h3>
+					<h3 className="heading heading--3">Filters</h3>
 					<GenreFilterContainer />
-					<RatingFilter />
+					<RatingFilterComponent />
 				</section>
-				<MoiveListContainer />
+				<MovieListContainer />
 			</main>
 		</div>
 	</Provider>

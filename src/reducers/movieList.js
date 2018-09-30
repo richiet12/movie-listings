@@ -1,7 +1,7 @@
 import Immutable from 'immutable';
 import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_FAILURE, FETCH_MOVIES_SUCCESS } from '../actions/fetchMovieList';
 import { FILTER_BY_GENRE, FILTER_BY_RATING } from '../actions/filterMovieList';
-import sortDecendingPopularity from '../util/sortDecendingPopularity';
+import sortDescendingPopularity from '../util/sortDescendingPopularity';
 import { filterMovies } from '../util/filterMovies';
 
 const immutableState = Immutable.Map({
@@ -26,7 +26,7 @@ export default function (state = immutableState, action) {
 			// it looks like the tmdb already sorts on popularity
 			// but I have added a backup sort incase the api changes
 			if (action.payload.results) {
-				action.payload.results.sort(sortDecendingPopularity);
+				action.payload.results.sort(sortDescendingPopularity);
 			}
 			return state
 				.set('error', false)

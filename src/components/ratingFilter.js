@@ -21,7 +21,7 @@ export class RatingFilter extends Component {
 	render() {
 		return (
 			<div className="filter-control filter-control--rating">
-				<p>Min rating: {this.state.rating} </p>
+				<p className="filter-control__label">Min rating: {this.state.rating} </p>
 				<Slider
 					defaultValue={3}
 					min={0}
@@ -34,8 +34,8 @@ export class RatingFilter extends Component {
 	}
 }
 
-function mapDispathcToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ filterByRating }, dispatch);
 }
 
-export default connect(null, mapDispathcToProps)(RatingFilter);
+export default connect(null, mapDispatchToProps)(RatingFilter);

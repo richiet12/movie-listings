@@ -77,8 +77,8 @@ function mapStateToProps({ movies, genres, loading }) {
 	return { movies, genres, loading };
 }
 
-function mapDispathcToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ fetchGenreAndMovieList }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispathcToProps)(MovieList);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieList);

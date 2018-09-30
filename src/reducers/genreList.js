@@ -18,6 +18,7 @@ const keysMap = {
 	id: 'value',
 	name: 'label',
 };
+
 let reNamedPayload;
 
 export default function (state = immutableState, action) {
