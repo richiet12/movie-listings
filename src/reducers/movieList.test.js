@@ -105,10 +105,10 @@ describe('Movie List Reducer', () => {
 	});
 
 	it('handles action of type FETCH_MOVIES_FAILURE', () => {
-		const payload = 'an error occured';
+		const payload = 'an error occurred';
 		const expectedOutput = Immutable.Map({
 			error: true,
-			errorMsg: 'an error occured',
+			errorMsg: 'an error occurred',
 			data: Immutable.Map({}),
 			filteredData: Immutable.Map({}),
 			genreFilter: [],
