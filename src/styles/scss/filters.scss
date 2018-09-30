@@ -1,6 +1,6 @@
 
 .filters {
-	border: 1px solid rgba(47, 64, 115, 0.15);
+	border: 1px solid $palette-primary-light;
 	padding: 15px;
 }
 
@@ -11,11 +11,11 @@
 
 	.filter-control--rating {
 		width: 50%;
+	}
 
-		p {
-			margin-bottom: 7px;
-			margin-top: 0;
-		}
+	.filter-control__label {
+		margin-bottom: 7px;
+		margin-top: 0;
 	}
 
 	.filter-control--genre {
