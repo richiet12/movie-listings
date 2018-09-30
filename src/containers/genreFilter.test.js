@@ -30,14 +30,14 @@ describe('Genre filter container', () => {
 	});
 
 	it('has one option in the select', () => {
-		expect(wrapper.prop('options').length).toBe(1);
+		expect(wrapper.find('StateManager').prop('options').length).toBe(1);
 	});
 
 	it('has placeholder', () => {
-		expect(wrapper.prop('placeholder')).toBe('filter by genre');
+		expect(wrapper.find('StateManager').prop('placeholder')).toBe('select genre');
 	});
 
 	it('allow multi select', () => {
-		expect(wrapper.prop('isMulti')).toEqual(true);
+		expect(wrapper.find('StateManager').prop('isMulti')).toEqual(true);
 	});
 });
