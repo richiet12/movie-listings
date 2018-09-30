@@ -1,3 +1,5 @@
+// Action - Fetch genres
+
 import axios from 'axios';
 import { GENRES_ENDPOINT } from '../config/tmdb';
 

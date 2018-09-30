@@ -17,6 +17,11 @@ To run the test suite run
 ### `npm test`
 Press a to run all of the tests
 
+### Troubleshooting failing test suite
+After running these tests on a different mac (OS Sierra) I have found that I saw the issues discussed here:
+https://github.com/facebook/create-react-app/issues/871
+The thread suggests installing watchman which resolved the issue for me.
+
 ## Stack
 - This project has been built using create-react-app. It has not been ejected yet so the react-scripts are still available, to find out more see the README_REACT.md file
 - Redux has been configured to handle the data in this app.
@@ -35,4 +40,3 @@ Press a to run all of the tests
 - The brief asked for checkbox inputs for the genre filter, I have assumed it was ok to use a multi select instead because I felt like it gives a better user experience.
 - The tests are not exhaustive, with more time I would like to have added more tests especially for the util files.
 - I have not included any end to end tests, with more time I would have liked to use cyprus to write tests to simulate real user behaviour.
-- I have kept comments to a minimum and have not added documentation within each file.

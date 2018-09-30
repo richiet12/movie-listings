@@ -1,3 +1,5 @@
+// Action - Fetch movies
+
 import axios from 'axios';
 import { MOVIES_ENDPOINT } from '../config/tmdb';
 

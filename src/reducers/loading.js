@@ -1,3 +1,7 @@
+// Reducer - Loading
+// handle request, failures and success actions
+// so that we can determine 'loading' state
+
 import Immutable from 'immutable';
 import { FETCH_GENRES_AND_MOVIES_REQUEST, FETCH_GENRES_AND_MOVIES_FAILURE, FETCH_GENRES_AND_MOVIES_SUCCESS } from '../actions/fetchGenreAndMovieLists';
 

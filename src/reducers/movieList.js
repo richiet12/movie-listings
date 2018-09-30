@@ -1,3 +1,6 @@
+// Reducer - Movie list
+// handle request, failures, success and filter actions
+
 import Immutable from 'immutable';
 import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_FAILURE, FETCH_MOVIES_SUCCESS } from '../actions/fetchMovieList';
 import { FILTER_BY_GENRE, FILTER_BY_RATING } from '../actions/filterMovieList';

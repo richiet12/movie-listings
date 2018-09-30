@@ -1,3 +1,6 @@
+// Component - Movie card
+// Render movie cards with movie info and poster image
+
 import React from 'react';
 import PosterImg from '../components/posterImg';
 

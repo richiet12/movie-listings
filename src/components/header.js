@@ -1,3 +1,6 @@
+// Component - Header
+// Render page header with h1
+
 import React from 'react';
 
 const Header = props => (

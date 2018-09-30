@@ -1,3 +1,9 @@
+// Container - Movie list
+// Render list of movies cards
+// on componentDidMount call fetchGenreAndMovieList
+// data comes from the movieListReducer
+// handle error and loading states as well as zero results
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

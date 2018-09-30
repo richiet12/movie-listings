@@ -1,3 +1,6 @@
+// Component - Error message
+// Render error message e.g. when there is an error from fetch
+
 import React from 'react';
 
 const ErrorMsg = (props) => {

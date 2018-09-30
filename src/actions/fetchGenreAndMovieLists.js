@@ -1,3 +1,7 @@
+// Action - Fetch genre and movie lists
+// This function calls fetch genre and fetch movies asynchronously
+// Only when both promises return can we continue to render the page
+
 import { fetchGenreList } from './fetchGenreList';
 import { fetchMovieList } from './fetchMovieList';
 

@@ -1,3 +1,5 @@
+// config for the movie database endpoints
+
 const API_DOMAIN = 'https://api.themoviedb.org/3/';
 const MOVIES_NOW_PLAYING_PATH = 'movie/now_playing';
 const GENRES_PATH = 'genre/movie/list';

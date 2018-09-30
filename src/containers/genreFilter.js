@@ -1,3 +1,8 @@
+// Container - Genre filter
+// Render genre filter using the react select plugin
+// list of genres comes from the genreReducer
+// on change dispatch the filterByGenre action
+
 /* eslint-disable jsx-a11y/label-has-for */
 
 import React, { Component } from 'react';

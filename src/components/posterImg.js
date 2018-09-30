@@ -1,3 +1,6 @@
+// Component - Poster image
+// Render poster image, when src is null use default missing image
+
 import React from 'react';
 import { IMAGE_ENDPOINT } from '../config/tmdb';
 import missingImgPath from '../imgs/missing.jpg';

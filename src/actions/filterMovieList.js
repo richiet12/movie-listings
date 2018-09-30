@@ -1,3 +1,6 @@
+// Action - Filters
+// user interaction will trigger filter by genre of filter by rating
+
 export const FILTER_BY_GENRE = 'FILTER_BY_GENRE';
 export const FILTER_BY_RATING = 'FILTER_BY_RATING';
 

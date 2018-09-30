@@ -1,3 +1,6 @@
+// Reducer - Genre list
+// handle request, failures and success actions
+
 import Immutable from 'immutable';
 import { FETCH_GENRES_REQUEST, FETCH_GENRES_FAILURE, FETCH_GENRES_SUCCESS } from '../actions/fetchGenreList';
 
@@ -30,8 +33,8 @@ export default function (state = immutableState, action) {
 				.set('data', Immutable.Map());
 
 		case FETCH_GENRES_SUCCESS:
-			// it looks like the tmdb already sorts on popularity
-			// but I have added a backup sort incase the api changes
+			// rename keys so the data can be used
+			// directly to populate the select element
 			reNamedPayload = action.payload;
 			if (reNamedPayload.genres) {
 				reNamedPayload.genres = reNamedPayload.genres.map(genre =>

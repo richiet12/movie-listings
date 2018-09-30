@@ -1,3 +1,7 @@
+// Component - Rating filter
+// Render rating filter using the react slider plugin
+// on change dispatch the filterByRating action
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
