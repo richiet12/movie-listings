@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-for */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -21,14 +23,18 @@ export class GenreFilter extends Component {
 		const genres = this.props.genres.get('data').get('genres') || [];
 
 		return (
-			<Select
-				className="filter-control filter-control--genre"
-				value={selectedOption}
-				onChange={this.handleChange}
-				options={genres}
-				placeholder="filter by genre"
-				isMulti
-			/>
+			<div className="filter-control filter-control--genre">
+				<label htmlFor="react-select-2-input" className="filter-control__label">Genre filter</label>
+				<Select
+					value={selectedOption}
+					onChange={this.handleChange}
+					options={genres}
+					placeholder="select genre"
+					isMulti
+					label="genre filter"
+					classNamePrefix
+				/>
+			</div>
 		);
 	}
 }

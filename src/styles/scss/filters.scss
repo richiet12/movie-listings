@@ -4,6 +4,17 @@
 	padding: 15px;
 }
 
+.filter-control__label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.filter-control--genre {
+	.true__placeholder {
+		color: $palette-paragraph;
+	}
+}
+
 @media screen and (min-width: 768px) {
 	.filter-control {
 		float: left;
@@ -11,6 +22,10 @@
 
 	.filter-control--rating {
 		width: 50%;
+
+		.rc-slider {
+			margin-top: 20px;
+		}
 	}
 
 	.filter-control__label {
