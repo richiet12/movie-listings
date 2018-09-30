@@ -1,7 +1,7 @@
 import React from 'react';
 import PosterImg from '../components/posterImg';
 
-const AlbumCard = props => (
+const MovieCard = props => (
 	<li className="movie-card clearfix">
 		<PosterImg className="movie-card__img" path={props.imgPath} alt={props.title} />
 		<div className="movie-card__info">
@@ -15,4 +15,4 @@ const AlbumCard = props => (
 	</li>
 );
 
-export default AlbumCard;
+export default MovieCard;
