@@ -22,6 +22,7 @@ export class GenreFilter extends Component {
 
 		return (
 			<Select
+				className="filter-control filter-control--genre"
 				value={selectedOption}
 				onChange={this.handleChange}
 				options={genres}

@@ -1,0 +1,25 @@
+
+.filters {
+	border: 1px solid rgba(47, 64, 115, 0.15);
+	padding: 15px;
+}
+
+@media screen and (min-width: 768px) {
+	.filter-control {
+		float: left;
+	}
+
+	.filter-control--rating {
+		width: 50%;
+
+		p {
+			margin-bottom: 7px;
+			margin-top: 0;
+		}
+	}
+
+	.filter-control--genre {
+		margin-right: 5%;
+		width: 45%;
+	}
+}

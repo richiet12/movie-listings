@@ -1,31 +1,17 @@
 import Immutable from 'immutable';
 import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_FAILURE, FETCH_MOVIES_SUCCESS } from '../actions/fetchMovieList';
-import { FILTER_BY_GENRE } from '../actions/filterMovieList';
+import { FILTER_BY_GENRE, FILTER_BY_RATING } from '../actions/filterMovieList';
 import sortDecendingPopularity from '../util/sortDecendingPopularity';
+import { filterMovies } from '../util/filterMovies';
 
 const immutableState = Immutable.Map({
 	error: false,
 	errorMsg: '',
 	data: Immutable.Map({}),
 	filteredData: Immutable.Map({}),
+	genreFilter: [],
+	ratingFilter: 3,
 });
-
-const filterMoviesByGenre = (action, state) => {
-	const filteredGenreIds = action.payload.map(id => id.value);
-	const allData = state.get('data');
-	const allMoviesData = allData.get('results');
-
-	return allMoviesData.filter((movie) => {
-		let result = true;
-
-		filteredGenreIds.map((filterId) => {
-			result = result && (movie.genre_ids.indexOf(filterId) >= 0);
-			return result;
-		});
-
-		return result;
-	});
-};
 
 export default function (state = immutableState, action) {
 	switch (action.type) {
@@ -57,7 +43,13 @@ export default function (state = immutableState, action) {
 
 		case FILTER_BY_GENRE:
 			return state
-				.set('filteredData', Immutable.Map({ results: filterMoviesByGenre(action, state) }));
+				.set('genreFilter', action.payload)
+				.set('filteredData', Immutable.Map({ results: filterMovies(state.set('genreFilter', action.payload)) }));
+
+		case FILTER_BY_RATING:
+			return state
+				.set('ratingFilter', action.payload)
+				.set('filteredData', Immutable.Map({ results: filterMovies(state.set('ratingFilter', action.payload)) }));
 
 		default:
 			return state;
